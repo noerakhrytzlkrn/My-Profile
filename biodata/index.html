@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noera Khairiyati Zulkarnaen | My Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --night: #d6f0ff;
+      --night-2: #1f6fb2;
+      --sakura: #5bb8f5;
+      --sun: #ffe08a;
+      --sky: #a8e4ff;
+      --paper: #f4fbff;
+      --ink: #0d2b4a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Zen Maru Gothic", "Trebuchet MS", sans-serif;
+      background: var(--night);
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(255,255,255,.7), transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(91,184,245,.35), transparent 45%);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    h1, h2, h3 { font-family: "Dela Gothic One", Impact, sans-serif; font-weight: 400; line-height: 1.2; }
+    a { color: inherit; }
+    a:focus-visible, .btn:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+
+    /* Navbar */
+    header.nav {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+      padding: 12px 5vw;
+      background: var(--ink);
+      color: var(--paper);
+      border-bottom: 4px solid var(--sakura);
+    }
+    .logo { font-family: "Dela Gothic One", sans-serif; font-size: 1.2rem; color: var(--sun); text-decoration: none; }
+    nav a { text-decoration: none; margin-left: 16px; font-weight: 700; font-size: .95rem; }
+    nav a:hover { color: var(--sakura); }
+
+    main { max-width: 1040px; margin: 0 auto; padding: 40px 5vw 60px; }
+
+    /* Panel manga */
+    .panel {
+      background: var(--paper);
+      color: var(--ink);
+      border: 4px solid var(--ink);
+      border-radius: 6px;
+      box-shadow: 8px 8px 0 var(--night-2);
+      padding: 28px;
+      margin-bottom: 40px;
+    }
+    .panel h2 { font-size: 1.7rem; margin-bottom: 4px; }
+    .episode {
+      display: inline-block; background: var(--sun); border: 3px solid var(--ink);
+      padding: 0 12px; margin-bottom: 12px; font-weight: 700; font-size: .9rem;
+      transform: rotate(-2deg);
+    }
+    .panel h3 { font-size: 1.1rem; margin: 6px 0 10px; color: var(--night-2); }
+
+    /* Hero */
+    .hero {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center;
+      background: linear-gradient(160deg, #1f6fb2, #3f9de0 55%, #8fd3ff 130%);
+      color: var(--paper);
+      border: 4px solid var(--paper);
+      box-shadow: 8px 8px 0 var(--sun);
+      border-radius: 6px;
+      padding: 40px 32px;
+      margin-bottom: 40px;
+      position: relative; overflow: hidden;
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); text-shadow: 4px 4px 0 var(--ink); }
+    .hero .role { color: var(--sun); font-weight: 700; margin: 8px 0 14px; font-size: 1.15rem; }
+    .bubble {
+      position: relative; background: var(--paper); color: var(--ink);
+      border: 3px solid var(--ink); border-radius: 22px; padding: 14px 18px; margin: 18px 0; max-width: 460px;
+    }
+    .bubble::after {
+      content: ""; position: absolute; left: 30px; bottom: -16px;
+      border: 8px solid transparent; border-top: 10px solid var(--ink);
+    }
+    .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+    .btn {
+      display: inline-block; text-decoration: none; font-weight: 700;
+      padding: 10px 20px; border: 3px solid var(--ink); border-radius: 999px;
+      background: var(--sun); color: var(--ink); box-shadow: 4px 4px 0 var(--ink);
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn.alt { background: var(--sky); }
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+
+    .photo {
+      justify-self: center; width: min(280px, 70vw); aspect-ratio: 3/4;
+      border: 5px solid var(--paper); border-radius: 6px;
+      transform: rotate(3deg); background: var(--night); overflow: hidden;
+      box-shadow: 8px 8px 0 var(--ink);
+      display: grid; place-items: center; text-align: center; font-size: .9rem; color: var(--sun);
+    }
+    .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Status bar ala karakter anime */
+    .status { list-style: none; margin-top: 18px; font-weight: 700; }
+    .status li { margin-bottom: 4px; }
+    .status span { color: var(--sun); }
+
+    /* Skills */
+    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-top: 12px; }
+    .skill { border: 3px solid var(--ink); border-radius: 6px; padding: 14px; background: #fff; }
+    .skill b { display: block; font-size: 1.05rem; }
+    .bar { height: 12px; background: #e5defa; border: 2px solid var(--ink); border-radius: 999px; margin-top: 8px; overflow: hidden; }
+    .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--sakura), var(--sky)); }
+    .learning { margin-top: 16px; font-weight: 700; color: var(--night-2); }
+
+    /* Project */
+    .project { border: 3px solid var(--ink); border-radius: 6px; padding: 18px; margin-top: 14px; background: #fff; }
+    .project h3 { margin-top: 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+    .tags span { background: var(--sky); border: 2px solid var(--ink); border-radius: 999px; padding: 0 12px; font-size: .85rem; font-weight: 700; }
+    .link { font-weight: 700; color: var(--night-2); }
+
+    /* Commit */
+    pre {
+      background: var(--ink); color: var(--sky); padding: 14px; border-radius: 6px;
+      overflow-x: auto; font-family: Consolas, "Courier New", monospace; font-size: .9rem; margin: 10px 0;
+    }
+
+    /* Tabel */
+    .table-wrap { overflow-x: auto; margin-top: 10px; }
+    table { width: 100%; border-collapse: collapse; min-width: 480px; }
+    th, td { border: 3px solid var(--ink); padding: 10px 12px; text-align: left; }
+    th { background: var(--sky); }
+
+    dl.identity { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; margin-top: 10px; }
+    dl.identity dt { font-weight: 700; color: var(--night-2); }
+
+    footer { text-align: center; padding: 28px 5vw 40px; border-top: 4px solid var(--sakura); background: var(--ink); color: var(--paper); }
+    footer a { color: var(--sun); }
+
+    /* Kelopak sakura (satu-satunya animasi otomatis) */
+    .petal {
+      position: fixed; top: -30px; width: 14px; height: 14px; z-index: 1; pointer-events: none;
+      background: #ffffff; border-radius: 0 100% 0 100%; opacity: .9; box-shadow: 0 0 6px var(--sakura);
+      animation: fall linear infinite;
+    }
+    .petal:nth-child(1) { left: 8%;  animation-duration: 14s; }
+    .petal:nth-child(2) { left: 28%; animation-duration: 18s; animation-delay: 3s; }
+    .petal:nth-child(3) { left: 52%; animation-duration: 16s; animation-delay: 6s; }
+    .petal:nth-child(4) { left: 74%; animation-duration: 20s; animation-delay: 1s; }
+    .petal:nth-child(5) { left: 92%; animation-duration: 15s; animation-delay: 8s; }
+    @keyframes fall {
+      to { transform: translateY(110vh) translateX(60px) rotate(360deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .petal { display: none; }
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+    }
+
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; padding: 28px 20px; }
+      .photo { order: -1; }
+      nav a { margin-left: 10px; font-size: .85rem; }
+      dl.identity { grid-template-columns: 1fr; gap: 0; }
+      dl.identity dd { margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body id="top">
+  <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+
+  <header class="nav">
+    <a class="logo" href="#top">Noera</a>
+    <nav>
+      <a href="#motivasi">Motivasi</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Project</a>
+      <a href="#education">Pendidikan</a>
+      <a href="#identity">Identitas</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Noera Khairiyati Zulkarnaen</h1>
+        <p class="role">Mahasiswa Informatika</p>
+        <div class="bubble">Halo! Selamat datang di halaman profil saya. Di sini ada cerita singkat tentang diri, kemampuan, dan project saya.</div>
+        <ul class="status">
+          <li><span>Nama:</span> Noera Khairiyati Zulkarnaen</li>
+          <li><span>GitHub:</span> noerakhrytzlkrn</li>
+          <li><span>Kota:</span> Pamekasan</li>
+        </ul>
+        <div class="btns">
+          <a class="btn" href="#motivasi">Tentang saya</a>
+          <a class="btn alt" href="#projects">Lihat project</a>
+        </div>
+      </div>
+      <div class="photo">
+        <!-- Ganti dengan nama file foto kamu, misalnya foto.jpg -->
+        <img src="foto.jpeg" alt="Foto Noera" onerror="this.style.display='none'; this.parentNode.append('Taruh foto.jpg di folder yang sama')">
+      </div>
+    </section>
+
+    <!-- 1. MOTIVASI -->
+    <section class="panel" id="motivasi">
+      <span class="episode">Episode 1</span>
+      <h2>Motivasi</h2>
+      <h3>Kenapa saya belajar teknologi?</h3>
+      <p>Saya belajar teknologi karena ingin terus berkembang, mengikuti perkembangan zaman, dan memiliki kemampuan yang bisa bermanfaat di masa depan. Saya ingin mengubah rasa ingin tahu menjadi keterampilan yang dapat membantu diri sendiri dan orang lain.</p>
+    </section>
+
+    <!-- 2. SKILLS -->
+    <section class="panel" id="skills">
+      <span class="episode">Episode 2</span>
+      <h2>Skills</h2>
+      <h3>Kemampuan yang sedang saya latih</h3>
+      <div class="skills">
+        <div class="skill"><b>HTML</b>Pemula<div class="bar"><i style="width:35%"></i></div></div>
+        <div class="skill"><b>Python</b>Pemula<div class="bar"><i style="width:30%"></i></div></div>
+        <div class="skill"><b>Git &amp; GitHub</b>Pemula<div class="bar"><i style="width:30%"></i></div></div>
+      </div>
+      <p class="learning">Sedang belajar: pemrograman berbasis platform.</p>
+    </section>
+
+    <!-- 3. PROJECT -->
+    <section class="panel" id="projects">
+      <span class="episode">Episode 3</span>
+      <h2>Projects</h2>
+      <div class="project">
+        <h3>My Profile</h3>
+        <p>Repository tugas P1 Pemrograman Berbasis Platform. Isinya biodata dan portfolio sederhana yang dibuat dengan HTML dan CSS.</p>
+        <div class="tags"><span>HTML</span><span>CSS</span><span>Git</span><span>GitHub</span></div>
+        <a class="link" href="https://github.com/noerakhrytzlkrn/My-Profile">Buka repository</a>
+      </div>
+    </section>
+
+    <!-- 4. COMMIT PROOF -->
+    <section class="panel" id="commits">
+      <span class="episode">Episode 4</span>
+      <h2>Commit Proof</h2>
+      <pre>$ git log --oneline -5</pre>
+      <p>Bukti proses pengerjaan repository bisa dilihat di halaman Commits GitHub. Bagian ini akan diperbarui setelah repository punya minimal tiga commit.</p>
+      <p style="margin-top:10px"><a class="link" href="https://github.com/noerakhrytzlkrn/My-Profile/commits">Lihat commit</a></p>
+    </section>
+
+    <!-- 5. EDUCATION -->
+    <section class="panel" id="education">
+      <span class="episode">Episode 5</span>
+      <h2>Education</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tahun</th><th>Institusi</th><th>Program / Jurusan</th></tr></thead>
+          <tbody>
+            <tr><td>2024 - Sekarang</td><td>Universitas Madura</td><td>Informatika</td></tr>
+            <tr><td>2021 - 2024</td><td>SMA Negeri 2 Pamekasan</td><td>IPS</td></tr>
+            <tr><td>2018 - 2021</td><td>SMP Negeri 8 Pamekasan</td><td>-</td></tr>
+            <tr><td>2012 - 2018</td><td>SD Negeri Panglegur 2</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 6. IDENTITY -->
+    <section class="panel" id="identity">
+      <span class="episode">Episode 6</span>
+      <h2>Personal Identity</h2>
+      <dl class="identity">
+        <dt>Nama lengkap</dt><dd>Noera Khairiyati Zulkarnaen</dd>
+        <dt>Nama panggilan</dt><dd>Noera</dd>
+        <dt>NIM</dt><dd>2101020002</dd>
+        <dt>Program studi</dt><dd>Informatika</dd>
+        <dt>Domisili</dt><dd>Pamekasan</dd>
+        <dt>Email</dt><dd>noerakhairiyatizulkarnaen@gmail.com</dd>
+      </dl>
+    </section>
+
+    <!-- 7. VIDEO P1 -->
+    <section class="panel" id="video">
+      <span class="episode">Episode 7</span>
+      <h2>Video P1</h2>
+      <h3>Video verifikasi</h3>
+      <p>Video ini menunjukkan proses verifikasi akun, repository, environment, perangkat, dan HTTP sesuai ketentuan P1.</p>
+      <div class="btns"><a class="btn alt" href="#">Tonton video P1</a></div>
+    </section>
+
+    <!-- 8. TEMA -->
+    <section class="panel" id="theme">
+      <span class="episode">Episode 8</span>
+      <h2>My Theme</h2>
+      <h3>Tema Anime</h3>
+      <p>Halaman ini memakai tema anime: layout ala panel manga, gelembung dialog, kelopak sakura, dan warna biru muda seperti langit cerah. Setiap bagian saya tulis sebagai satu episode.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Dibuat oleh noerakhrytzlkrn untuk tugas P1 Pemrograman Berbasis Platform</p>
+    <p><a href="https://github.com/noerakhrytzlkrn/My-Profile">Repository</a> &nbsp;|&nbsp; <a href="#top">Kembali ke atas</a></p>
+  </footer>
+</body>
+</html>
